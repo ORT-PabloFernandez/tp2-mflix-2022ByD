@@ -8,4 +8,8 @@ async function getMovieById(movie_id){
     return movies.getMovieById(movie_id);
 }
 
-module.exports = {getAllMovies, getMovieById};
+async function getMoviesWithAtLeastOnePrice(pageSize, page) {
+    return movies.getMoviesWithAtLeastOnePrice(pageSize, page);
+}
+
+module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice};

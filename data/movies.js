@@ -25,4 +25,15 @@ async function getMovieById(movie_id){
     return movies;
 }
 
-module.exports = {getAllMovies, getMovieById};
+async function getMoviesWithAtLeastOnePrice() {
+    const connectiondb = await conn.getConnection();
+    const query = {"awards.wins": {$gt: 1}};
+    const movies = await connectiondb
+                        .db(DATABASE)
+                        .collection(MOVIES)
+                        .find(query)
+                        .toArray();    
+    return movies;
+}
+
+module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice};
