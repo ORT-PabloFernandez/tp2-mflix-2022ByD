@@ -21,18 +21,18 @@ async function getMovieById(movie_id){
                         .db(DATABASE)
                         .collection(MOVIES)
                         .find(query)
-                        .toArray();    
+                        .toArray();
     return movies;
 }
 
-async function getMoviesWithAtLeastOnePrice() {
+async function getMoviesWithAtLeastOnePrice(pageSize, page) {
     const connectiondb = await conn.getConnection();
-    const query = {"awards.wins": {$gt: 1}};
+    const query = {"award.wins": {$gt: 1}};
     const movies = await connectiondb
                         .db(DATABASE)
                         .collection(MOVIES)
-                        .find(query)
-                        .toArray();    
+                        .find(query).limit(pageSize).skip(pageSize * page)
+                        .toArray();
     return movies;
 }
 

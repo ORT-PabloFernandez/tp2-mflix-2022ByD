@@ -9,7 +9,7 @@ async function getMovieById(movie_id){
 }
 
 async function getMoviesWithAtLeastOnePrice(pageSize, page) {
-    return movies.getMoviesWithAtLeastOnePrice(pageSize, page);
+    return movies.getMoviesWithAtLeastOnePrice(pageSize, page)
 }
 
 module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice};
