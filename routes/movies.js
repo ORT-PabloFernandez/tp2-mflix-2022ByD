@@ -9,4 +9,9 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllMovies(pageSize, page));
 });
 
+router.get('/:movie_id', async (req, res) => {    
+    const movie_id = req.params.movie_id;
+    res.json(await controller.getMovieById(movie_id));
+});
+
 module.exports = router;
