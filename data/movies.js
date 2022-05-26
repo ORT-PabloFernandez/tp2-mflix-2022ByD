@@ -36,4 +36,15 @@ async function getMoviesWithAtLeastOnePrice(pageSize, page) {
     return movies;
 }
 
-module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice};
+async function getMoviesByLanguage(pageSize, page, language_id) {
+    const connectiondb = await conn.getConnection();
+    const query = {"languages": language_id};
+    const movies = await connectiondb
+                        .db(DATABASE)
+                        .collection(MOVIES)
+                        .find(query).limit(pageSize).skip(pageSize * page)
+                        .toArray();
+    return movies;
+}
+
+module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice, getMoviesByLanguage};

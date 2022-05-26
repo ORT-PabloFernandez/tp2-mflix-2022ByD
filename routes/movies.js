@@ -21,4 +21,12 @@ router.get('/all/at_least_one_price', async (req, res) => {
     res.json(await controller.getMoviesWithAtLeastOnePrice(pageSize, page));
 });
 
+router.get('/language/:language_id', async (req, res) => {    
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+    const page = req.query.page ? parseInt(req.query.page): 0;
+    const language_id = req.params.language_id;
+    
+    res.json(await controller.getMoviesByLanguage(pageSize, page, language_id));
+});
+
 module.exports = router;
