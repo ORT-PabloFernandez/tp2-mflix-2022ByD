@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const mongoclient = require('mongodb').MongoClient;
 const uri = process.env.MONGODB;
 const client = new mongoclient(uri);
