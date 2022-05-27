@@ -16,9 +16,13 @@ async function getMoviesByLanguage(language, pageSize, page){
     return movies.getMoviesByLanguage(language, pageSize, page)
 }
 
+async function getMoviesByRating(pageSize,page){
+    return movies.getMoviesByRating(pageSize,page);
+}
 module.exports = {
     getAllMovies, 
     getMovieById,
     getAwardedMovies,
     getMoviesByLanguage,
+    getMoviesByRating
 };

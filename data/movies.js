@@ -30,10 +30,14 @@ async function getAwardedMovies(pageSize, page){
     const movies = await connectiondb
                 .db(DATABASE)
                 .collection(MOVIES)
-                .find({}).limit(pageSize).skip(pageSize * page)
+                .find({"awards.wins": {$gte: 1}}).limit(pageSize).skip(pageSize * page)
                 .toArray();
 
-    const awardedMovies = movies.filter((awarded) => parseInt(awarded.awards.wins) >= 1);
+    let awardedMovies = movies.map((awarded) => ({
+        title: awarded.title,
+        poster: awarded.poster,
+        plot: awarded.plot
+    }))
 
     return awardedMovies;
 }
@@ -43,12 +47,26 @@ async function getMoviesByLanguage(language, pageSize, page){
     const movies = await connectiondb
                 .db(DATABASE)
                 .collection(MOVIES)
-                .find({}).limit(pageSize).skip(pageSize * page)
+                .find({"languages": language}).limit(pageSize).skip(pageSize * page)
                 .toArray();
 
-    const moviesByLanguage = movies.filter((byLanguage) => byLanguage.languages === language);
+    /* const moviesByLanguage = movies.filter((byLanguage) => byLanguage.languages === language); */
 
-    return moviesByLanguage;
+    return movies;
 }
 
-module.exports = {getAllMovies, getMovieById, getAwardedMovies, getMoviesByLanguage};
+async function getMoviesByRating(pageSize, page) {
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+      .db(DATABASE)
+      .collection(MOVIES)
+      .find()
+      .sort({ "tomatoes.fresh": -1 })
+      .limit(pageSize)
+      .skip(pageSize * page)
+      .toArray();
+  
+    return movies;
+  }
+
+module.exports = {getAllMovies, getMovieById, getAwardedMovies, getMoviesByLanguage, getMoviesByRating};
