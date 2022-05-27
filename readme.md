@@ -38,12 +38,12 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 
 ## Listado de endpoint
--GET /api/movies?pageSize=[pageSize]&page=[page]
--GET /api/movies/Id?id=[id]
--GET /api/movies/winners?pageSize=[pageSize]&page=[page]
--GET /api/movies?pageSize=[pageSize]&page=[page]&languaje=[languaje]
--GET /api/movies/ranked?pageSize=[pageSize]&page=[page]
--GET /api/users/getComments?id=[id]
+1. -GET /api/movies?pageSize=[pageSize]&page=[page]
+2. -GET /api/movies/Id?id=[id]
+3. -GET /api/movies/winners?pageSize=[pageSize]&page=[page]
+4. -GET /api/movies?pageSize=[pageSize]&page=[page]&languaje=[languaje]
+5. -GET /api/movies/ranked?pageSize=[pageSize]&page=[page]
+6. -GET /api/users/getComments?id=[id]
 ## Pegar esto en el .env
 MONGODB = mongodb+srv://admin:tp2@cluster0.3bm3a.azure.mongodb.net/?retryWrites=true&w=majority
 PORT=3000
