@@ -54,9 +54,23 @@ async function getMoviesByLanguage(lang, pageSize, page) {
   return movies;
 }
 
+async function orderByFresh() {
+  const connectiondb = await conn.getConnection();
+  const movies = await connectiondb
+    .db(DATABASE)
+    .collection(MOVIES)
+    .find()
+    .sort({ "tomatoes.viewer.rating": -1 })
+    .limit(10)
+    .toArray();
+  console.log(movies);
+  return movies;
+}
+
 module.exports = {
   getAllMovies,
   getMoviebyId,
   getAwardWinningMovies,
   getMoviesByLanguage,
+  orderByFresh,
 };

@@ -31,4 +31,9 @@ router.get("/language/:language", async (req, res) => {
   res.json(movies);
 });
 
+router.get("/orderByFresh/1", async (req, res) => {
+  const movies = await data.orderByFresh();
+  res.json(movies);
+});
+
 module.exports = router;
