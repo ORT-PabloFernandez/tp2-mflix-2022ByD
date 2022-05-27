@@ -40,6 +40,16 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 
+1. -GET /api/movies/:id
+2. -GET /api/movies/awards/:aw
+3. -GET /api/movies/languages/Language?pageSize=[pageSize]&page=[page]
+4. -GET /api/movies/ranking
+
+Sin Completar 5
+No llegué a completar, simplemente traigo la lista de comentarios según el id de usuario pasado
+
+5. -GET /api/users/:id
+
 
 
 
