@@ -38,7 +38,12 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 
 ## Listado de endpoint
--GET /api/movies?pageSize=[pageSize]&page=[page]
+- GET /api/movies?pageSize=[pageSize]&page=[page]
+- GET /api/movie/:id
+- GET /api/movies/bylanguage/Hungarian?pageSize=[pageSize]&page=[page]
+- GET /api/movies/winners/:awards
+
+No incluyo ranking ya que no pude terminarlo
 
 
 
