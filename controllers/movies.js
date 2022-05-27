@@ -16,8 +16,8 @@ async function getAllMoviesByLanguage(language, pageSize, page){
     return movies.getAllMoviesByLanguage(language, pageSize, page);
 }
 
-// async function getAllMoviesByTomatoes(){    
-//     return movies.getAllMoviesByTomatoes();
-// }
+async function getAllMoviesByTomatoes(pageSize, page){    
+    return movies.getAllMoviesByTomatoes(pageSize, page);
+}
 
-module.exports = {getAllMovies, getMovie, getWinerMovies, getAllMoviesByLanguage,};
+module.exports = {getAllMovies, getMovie, getWinerMovies, getAllMoviesByLanguage, getAllMoviesByTomatoes};
