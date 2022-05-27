@@ -46,3 +46,4 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 -GETBYID /api/movies/:id
 -GETBYWIN api/movies/moviesWin/:number?pageSize=[pageSize]&page=[page]
 -GETBYLANGUAJES api/movies/languaje/:languaje?pageSize=[pageSize]&page=[page]
+-GETBYORDENTOMATOES api/movies/ordenTomatoes?pageSize=[pageSize]&page=[page]

@@ -29,7 +29,7 @@ async function getMoviesByWin(cantidadGanadas, pageSize, page ){
     const movies = await connectiondb
                 .db(DATABASE)
                 .collection(MOVIES)
-                .find({}).limit(pageSize).skip(pageSize * page)
+                .find({}).limit(pageSize).skip(pageSize * page).sort({"tomatoes.fresh": -1})
                 .toArray();              
     return movies.filter(movie => movie.awards.wins >= cantidadGanadas)
                  .map(movie => {
@@ -58,7 +58,7 @@ async function getMoviesByTomatoes(pageSize, page){
                 .collection(MOVIES)
                 .find().limit(pageSize).skip(pageSize * page)
                 .toArray(); 
-    return movies 
+    return movies.filter(movie => movie.awards.wins >= cantidadGanadas) 
 }
 
 module.exports = {getAllMovies, getMoviesById, getMoviesByWin, getMoviesByLanguaje};
