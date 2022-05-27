@@ -1,10 +1,19 @@
 var express = require('express');
 var router = express.Router();
+const controller = require('../controllers/users');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  console.log('checkl');
-  res.send('respond with a resource');
+router.get('/comments/:userId', async function (req, res, next) {
+  const userId = req.params.userId;
+
+  res.json(await controller.getCommentsFromUser(userId));
+});
+
+router.get('/', async function (req, res, next) {
+  const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+  const page = req.query.page ? parseInt(req.query.page) : 0;
+
+  res.json(await controller.getAllUsers(pageSize, page));
 });
 
 module.exports = router;
