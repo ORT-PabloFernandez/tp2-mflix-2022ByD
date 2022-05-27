@@ -19,5 +19,12 @@ async function getOrdenTomatoes(pageSize, page){
     return movies.getMoviesByTomatoes(pageSize, page);
 }
 
+async function getAllUsers(){    
+    return movies.getUsers();
+}
+async function getAllComments(){    
+    return movies.getComments();
+}
 
-module.exports = {getAllMovies, getMoviesById, getMoviesWin, getMoviesLanguajes, getOrdenTomatoes};
+
+module.exports = {getAllMovies, getMoviesById, getMoviesWin, getMoviesLanguajes, getOrdenTomatoes, getAllUsers, getAllComments};

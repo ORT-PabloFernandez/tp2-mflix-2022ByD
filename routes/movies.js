@@ -50,5 +50,12 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllMovies(pageSize, page));
 });
 
+router.get('/users', async (req, res) => {    
+    res.json(await controller.getAllUsers());
+});
+
+router.get('/comments ', async (req, res) => {    
+    res.json(await controller.getAllComments());
+});
 
 module.exports = router;

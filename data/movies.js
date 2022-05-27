@@ -2,6 +2,8 @@ const { json } = require('express/lib/response');
 const conn = require('./conn');
 const DATABASE = 'sample_mflix';
 const MOVIES = 'movies';
+const USERS  ='users';
+const COMMENTS ='comments';
 const objectId = require('mongodb').ObjectId;
 
 async function getAllMovies(pageSize, page){
@@ -61,4 +63,24 @@ async function getMoviesByTomatoes(pageSize, page){
     return movies
 }
 
-module.exports = {getAllMovies, getMoviesById, getMoviesByWin, getMoviesByLanguaje,getMoviesByTomatoes};
+async function getUsers(){
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+                        .db(DATABASE)
+                        .collection(USERS)
+                        .find()
+                        .toArray();    
+    return movies;
+}
+
+async function getComments(){
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+                        .db(DATABASE)
+                        .collection(COMMENTS)
+                        .find()
+                        .toArray();    
+    return movies;
+}
+
+module.exports = {getAllMovies, getMoviesById, getMoviesByWin, getMoviesByLanguaje,getMoviesByTomatoes,getUsers, getComments};
