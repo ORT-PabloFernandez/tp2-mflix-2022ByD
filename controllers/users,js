@@ -1,0 +1,11 @@
+const users = require('../data/users');
+
+async function getAllUsers() {
+    return users.getAllUsers();
+}
+
+async function getUserById(user_id) {
+    return users.getUserById(user_id);
+}
+
+module.exports = {getAllUsers, getUserById};
