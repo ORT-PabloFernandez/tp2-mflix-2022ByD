@@ -40,6 +40,19 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 
+1) - GET /api/movies/id
+
+Ejemplo: api/movies/573a1390f29313caabcd4135
+
+
+2) -GET /api/language/paramLengua                       <= Obtener películas por lenguaje
+    
+Ejemplo: /api/movies/language/English
+
+3) GET /api/ganadores
+
+
+4) GET /api/fresh
 
 
 
