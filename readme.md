@@ -40,7 +40,16 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 
+## Buscar pelicula por ID
+-GET /api/movies/:id
 
+## Listar peliculas ganadoras con una o mas premios.
+-GET /api/movies/winners/oneawardsplus?pageSize=[pageSize]&page=[page]
 
+## Listar peliculas por idioma.
+-GET /api/movies/language/:ln?pageSize=[pageSize]&page=[page]
 
+## Listar peliculas por puntage tomatoes
+-GET /api/movies/calification/descending?pageSize=[pageSize]&page=[page]
 
+## En el .env se encuentra la variable AWARDS=1 para el punto 2.
