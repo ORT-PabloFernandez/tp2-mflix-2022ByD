@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/movies');
 
-router.get('/:languaje', async (req, res) => {
+router.get('/languaje/:languaje', async (req, res) => {
     try{
         const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
         const page = req.query.page ? parseInt(req.query.page): 0;

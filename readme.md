@@ -45,4 +45,4 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 -GETBYID /api/movies/:id
 -GETBYWIN api/movies/moviesWin/:number
--GETBYLANGUAJES api/movies/:languaje?pageSize=[pageSize]&page=[page]
+-GETBYLANGUAJES api/movies/languaje/:languaje?pageSize=[pageSize]&page=[page]
