@@ -3,37 +3,63 @@ const router = express.Router();
 const controller = require('../controllers/movies');
 
 router.get('/', async (req, res) => {    
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
-    const page = req.query.page ? parseInt(req.query.page): 0;
-    
-    res.json(await controller.getAllMovies(pageSize, page));
+    try{
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+        const page = req.query.page ? parseInt(req.query.page): 0;
+        
+        res.json(await controller.getAllMovies(pageSize, page));
+
+    }catch(error){
+        res.status(400).json(error.message)
+    }
 });
 
-router.get('/find/awarded/', async (req, res) => {
-    const min = req.query.min ? parseInt(req.query.min) : 1;
+router.get('/:id', async (req, res) =>{
+    try{
+        const id = req.params.id
 
-    res.json( await controller.getAwardedMovies(min))
+        res.json(await controller.getOneMovie(id))
+
+    }catch(error){
+        res.status(400).json(error.message)
+    }
+})
+
+router.get('/find/awarded/', async (req, res) => {
+    try{
+        const min = req.query.min ? parseInt(req.query.min) : 1;
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+        const page = req.query.page ? parseInt(req.query.page): 0;
+    
+        res.json( await controller.getAwardedMovies(min, pageSize, page))
+    }catch(error){
+        res.status(400).json(error.message)
+    }
 })
 
 router.get('/find/lang/', async (req, res) => {
-    const lang = req.query.lang ? req.query.lang : "English";
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
-    const page = req.query.page ? parseInt(req.query.page): 0;
+    try{
+        const lang = req.query.lang ? req.query.lang : "English";
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+        const page = req.query.page ? parseInt(req.query.page): 0;
 
-    res.json( await controller.getFilteredByLang(pageSize, page, lang))
+        res.json( await controller.getFilteredByLang(pageSize, page, lang))
+    }catch(error){
+        res.status(400).json(error.message)
+    }
 })
 
 router.get('/sort/fresh/', async (req, res) => {
-    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
-    const page = req.query.page ? parseInt(req.query.page): 0;
+    try{
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+        const page = req.query.page ? parseInt(req.query.page): 0;
 
-    res.json( await controller.getSortedByFresh(pageSize, page))
+        res.json( await controller.getSortedByFresh(pageSize, page))
+    }catch(error){
+        res.status(400).json(error.message)
+    }
 })
 
-router.get('/:id', async (req, res) =>{
-	const id = req.params.id
-	res.json(await controller.getOneMovie(id))
-})
 
 module.exports = router;
 

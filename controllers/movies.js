@@ -8,8 +8,8 @@ async function getOneMovie(id){
     return movies.getMovie(id);
 }
 
-async function getAwardedMovies(min){    
-    return movies.getOnlyAwardedMovies(min);
+async function getAwardedMovies(min, pageSize, page){    
+    return movies.getOnlyAwardedMovies(min, pageSize, page);
 }
 
 async function getFilteredByLang(pageSize, page, lang){
