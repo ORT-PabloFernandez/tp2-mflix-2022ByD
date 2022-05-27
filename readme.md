@@ -39,6 +39,15 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 
 ## Listado de endpoint
 -GET /api/movies?pageSize=[pageSize]&page=[page]
+1- Una pelicula:
+-GET /api/movies/573a1391f29313caabcd9688 
+2- Ganadores. Se le pasa por parametos el número 1, para poder hacer la comparación en el codigo y que sea reutilizable. Sin hardcodear.
+-GET /api/movies/wins/1
+3- En este caso se pasa por parametro el idioma para realizar el find() y filtrar por ese idoma solamente.
+-GET /api/movies/languages/English
+4- No encontre la forma de llegar hasta Fresh.
+-GET /api/movies/fresh/0
+
 
 
 
