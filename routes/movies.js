@@ -29,4 +29,11 @@ router.get('/language/:language_id', async (req, res) => {
     res.json(await controller.getMoviesByLanguage(pageSize, page, language_id));
 });
 
+router.get('/all/fresh', async (req, res) => {    
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize): 0;
+    const page = req.query.page ? parseInt(req.query.page): 0;
+    
+    res.json(await controller.getAllMoviesOrdered(pageSize, page));
+});
+
 module.exports = router;

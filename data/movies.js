@@ -47,4 +47,14 @@ async function getMoviesByLanguage(pageSize, page, language_id) {
     return movies;
 }
 
-module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice, getMoviesByLanguage};
+async function getAllMoviesOrdered(pageSize, page) {
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+                        .db(DATABASE)
+                        .collection(MOVIES)
+                        .find({}).limit(pageSize).skip(pageSize * page).sort({ "tomatoes.fresh": -1 })
+                        .toArray();    
+    return movies;
+}
+
+module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice, getMoviesByLanguage, getAllMoviesOrdered};

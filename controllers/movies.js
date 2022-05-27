@@ -16,4 +16,8 @@ async function getMoviesByLanguage(pageSize, page, language_id) {
     return movies.getMoviesByLanguage(pageSize, page, language_id);
 }
 
-module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice, getMoviesByLanguage};
+async function getAllMoviesOrdered(pageSize, page) {
+    return movies.getAllMoviesOrdered(pageSize, page);
+}
+
+module.exports = {getAllMovies, getMovieById, getMoviesWithAtLeastOnePrice, getMoviesByLanguage, getAllMoviesOrdered};
