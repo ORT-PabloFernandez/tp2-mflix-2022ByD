@@ -38,7 +38,17 @@ async function getMoviesByWin(cantidadGanadas){
                             poster: movie.poster,
                             plot: movie.plot,
                         } 
-                    }) 
+                }) 
 }
 
-module.exports = {getAllMovies, getMoviesById, getMoviesByWin};
+async function getMoviesByLanguaje(languaje, pageSize, page){
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+                .db(DATABASE)
+                .collection(MOVIES)
+                .find({languages: languaje}).limit(pageSize).skip(pageSize * page)
+                .toArray(); 
+    return movies             
+}
+
+module.exports = {getAllMovies, getMoviesById, getMoviesByWin, getMoviesByLanguaje};

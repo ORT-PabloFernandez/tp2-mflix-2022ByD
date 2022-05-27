@@ -8,9 +8,13 @@ async function getMoviesById(id){
     return movies.getMoviesById(id);
 }
 
-async function getMoviesWin(id){    
-    return movies.getMoviesByWin(id);
+async function getMoviesWin(number){    
+    return movies.getMoviesByWin(number);
+}
+
+async function getMoviesLanguajes(languaje,pageSize, page){    
+    return movies.getMoviesByLanguaje(languaje,pageSize, page);
 }
 
 
-module.exports = {getAllMovies, getMoviesById, getMoviesWin};
+module.exports = {getAllMovies, getMoviesById, getMoviesWin, getMoviesLanguajes};

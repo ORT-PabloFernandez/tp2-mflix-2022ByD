@@ -3,6 +3,13 @@ const router = express.Router();
 const controller = require('../controllers/movies');
 
 
+router.get('/moviesWin/:number', async (req, res) => {
+    try{
+        res.json(await controller.getMoviesWin(req.params.number));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+});
 
 router.get('/:id', async (req, res) => {
     try{
@@ -19,15 +26,12 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllMovies(pageSize, page));
 });
 
-router.get('/moviesWin'), async (req, res) =>{
+router.get('/moviesWin/:languaje', async (req, res) => {
     try{
-        res.json(await controller.getMoviesWin(cantidadGanadas));
+        res.json(await controller.getMoviesLanguajes(req.params.languaje, pageSize, page));
     }catch(err){
         res.sendStatus(400).json(err)
     }
-}
-
-
-
+});
 
 module.exports = router;
