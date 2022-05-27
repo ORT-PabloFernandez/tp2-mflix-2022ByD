@@ -36,4 +36,9 @@ router.get("/orderByFresh/1", async (req, res) => {
   res.json(movies);
 });
 
+router.get("/usersComments/:id", async (req, res) => {
+  const usersAndComments = await data.getUsersComments(req.params.id);
+  res.json(usersAndComments);
+});
+
 module.exports = router;

@@ -1,6 +1,8 @@
 const conn = require("./conn");
 const DATABASE = "sample_mflix";
 const MOVIES = "movies";
+const USERS = "users";
+const COMMENTS = "comments";
 const objectId = require("mongodb").ObjectId;
 
 async function getAllMovies(pageSize, page) {
@@ -63,8 +65,24 @@ async function orderByFresh() {
     .sort({ "tomatoes.viewer.rating": -1 })
     .limit(10)
     .toArray();
-  console.log(movies);
   return movies;
+}
+
+async function getUsersComments(id) {
+  const connectiondb = await conn.getConnection();
+  const comments = await connectiondb
+    .db(DATABASE)
+    .collection(COMMENTS)
+    .find({ _id: new objectId(id) })
+    .toArray();
+
+  const user = await connectiondb
+    .db(DATABASE)
+    .collection(USERS)
+    .find({ _id: new objectId(id) })
+    .toArray();
+
+  return { user: user, comments: comments };
 }
 
 module.exports = {
@@ -73,4 +91,5 @@ module.exports = {
   getAwardWinningMovies,
   getMoviesByLanguage,
   orderByFresh,
+  getUsersComments,
 };
