@@ -41,6 +41,10 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 
 
-
+## Acceso
+-GET /:movie_id
+-GET /all/at_least_one_price
+-GET /language/:language_id
+-GET /all/fresh
 
 

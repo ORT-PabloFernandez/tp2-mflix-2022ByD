@@ -1,27 +1,27 @@
 const conn = require('./conn');
 const objectId = require('mongodb').ObjectId;
 const DATABASE = 'sample_mflix';
-const MOVIES = 'movies';
+const USERS = 'users';
 
 async function getAllUsers(pageSize, page){
     const connectiondb = await conn.getConnection();
-    const movies = await connectiondb
+    const users = await connectiondb
                         .db(DATABASE)
-                        .collection(MOVIES)
+                        .collection(USERS)
                         .find({}).limit(pageSize).skip(pageSize * page)
                         .toArray();    
-    return movies;
+    return users;
 }
 
 async function getUserById(user_id){
     const connectiondb = await conn.getConnection();
     const query = {_id: new objectId(user_id)};
-    const movies = await connectiondb
+    const users = await connectiondb
                         .db(DATABASE)
-                        .collection(MOVIES)
+                        .collection(USERS)
                         .find(query)
                         .toArray();
-    return movies;
+    return users;
 }
 
 module.exports = {getAllUsers, getUserById}
