@@ -8,13 +8,16 @@ async function getMoviesById(id){
     return movies.getMoviesById(id);
 }
 
-async function getMoviesWin(number){    
-    return movies.getMoviesByWin(number);
+async function getMoviesWin(number,pageSize, page){    
+    return movies.getMoviesByWin(number,pageSize, page);
 }
 
 async function getMoviesLanguajes(languaje,pageSize, page){    
     return movies.getMoviesByLanguaje(languaje,pageSize, page);
 }
+async function getOrdenTomatoes(pageSize, page){
+    return movies.getMoviesByTomatoes(pageSize, page);
+}
 
 
-module.exports = {getAllMovies, getMoviesById, getMoviesWin, getMoviesLanguajes};
+module.exports = {getAllMovies, getMoviesById, getMoviesWin, getMoviesLanguajes, getOrdenTomatoes};
