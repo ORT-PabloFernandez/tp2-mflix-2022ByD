@@ -40,6 +40,16 @@ Si ya terminaste o son las 10:00 asegurate de seguir los siguientes pasos para l
 ## Listado de endpoint
 -GET /api/movies?pageSize=[pageSize]&page=[page]
 
+-GET /api/movies/[id]
+
+-GET /api/movies/prize/[minWinsNumber]?pageSize=[pageSize]&page=[page]
+    // [minWinsNumber] el número de premios mínimo que deben tener las películas buscadas
+
+-GET /api/movies/language/[language]?pageSize=[pageSize]&page=[page]
+    // [language] el idioma por el cual filtrar las películas ; case sensitive
+
+-GET /api/movies/puntaje/bypuntajes/?pageSize=[pageSize]&page=[page]
+
 
 
 
