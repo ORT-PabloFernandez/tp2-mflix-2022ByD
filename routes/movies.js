@@ -27,11 +27,11 @@ router.get('/language/:language', async (req, res) => {
     res.json(await controller.getAllMoviesByLanguage(language, pageSize, page));
 });
 
-router.get('/bytomatoes', async (req, res) => {    
-    const movies = await controller.getAllMoviesByTomatoes();
+// router.get('/bytomatoes', async (req, res) => {    
+//     const movies = await controller.getAllMoviesByTomatoes();
     
-    res.json(movies);
-});
+//     res.json(movies);
+// });
 
 
 module.exports = router;

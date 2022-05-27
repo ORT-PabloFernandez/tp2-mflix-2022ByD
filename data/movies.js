@@ -43,14 +43,15 @@ async function getAllMoviesByLanguage(language,pageSize, page){
     return movies;
 }
 
-async function getAllMoviesByTomatoes(){
-    const connectiondb = await conn.getConnection();
-    const movies = await connectiondb
-                        .db(DATABASE)
-                        .collection(MOVIES)
-                        .find({}).sort({"tomatoes.fresh": -1})
-                        .toArray();    
-    return movies;
-}
+// async function getAllMoviesByTomatoes(){
+//     const connectiondb = await conn.getConnection();
+//     const movies = await connectiondb
+//                         .db(DATABASE)
+//                         .collection(MOVIES)
+//                         .find()
+//                         .toArray();
+//     //movies.sort(function(a, b){return b.tomatoes.fresh - a.tomatoes.fresh})    
+//     return movies;
+// }
 
-module.exports = {getAllMovies, getMovie, getWinerMovies, getAllMoviesByLanguage, getAllMoviesByTomatoes};
+module.exports = {getAllMovies, getMovie, getWinerMovies, getAllMoviesByLanguage};
