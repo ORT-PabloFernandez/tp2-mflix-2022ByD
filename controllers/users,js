@@ -1,11 +1,11 @@
-const users = require('../data/users');
+var users = require('../data/users');
 
-async function getAllUsers(pageSize, page){    
+async function getAllUsers(pageSize, page) {    
     return users.getAllUsers(pageSize, page);
 }
 
-async function getUserById(user_id){    
+async function getUserById(user_id) {    
     return users.getUserById(user_id);
 }
 
-module.export = { getAllUsers, getUserById };
+module.exports = {getAllUsers, getUserById};

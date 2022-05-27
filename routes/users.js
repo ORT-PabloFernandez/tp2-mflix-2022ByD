@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const controller = require('../controllers/');
+const controller = require('../controllers/users');
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
