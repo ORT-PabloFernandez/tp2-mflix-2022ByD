@@ -5,9 +5,12 @@ async function getAllMovies(pageSize, page){
 }
 
 async function getMoviesById(id){    
-    return movies.getMoviesId(id);
+    return movies.getMoviesById(id);
+}
+
+async function getMoviesWin(id){    
+    return movies.getMoviesByWin(id);
 }
 
 
-
-module.exports = {getAllMovies, getMoviesById};
+module.exports = {getAllMovies, getMoviesById, getMoviesWin};

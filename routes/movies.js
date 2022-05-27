@@ -6,7 +6,6 @@ const controller = require('../controllers/movies');
 
 router.get('/:id', async (req, res) => {
     try{
-        console.log('HOLA');
         res.json(await controller.getMoviesById(req.params.id));
     }catch(err){
         res.sendStatus(400).json(err)
@@ -19,6 +18,16 @@ router.get('/', async (req, res) => {
     
     res.json(await controller.getAllMovies(pageSize, page));
 });
+
+router.get('/moviesWin'), async (req, res) =>{
+    try{
+        res.json(await controller.getMoviesWin(cantidadGanadas));
+    }catch(err){
+        res.sendStatus(400).json(err)
+    }
+}
+
+
 
 
 module.exports = router;

@@ -24,4 +24,21 @@ async function getMoviesById(id){
     return movie;
 }
 
-module.exports = {getAllMovies, getMoviesById};
+async function getMoviesByWin(cantidadGanadas){
+    const connectiondb = await conn.getConnection();
+    const movies = await connectiondb
+                .db(DATABASE)
+                .collection(MOVIES)
+                .find()
+                .toArray();              
+    return movies.filter(movie => movie.awards.wins >= cantidadGanadas)
+                 .map(movie => {
+                        return {
+                            title: movie.title,
+                            poster: movie.poster,
+                            plot: movie.plot,
+                        } 
+                    }) 
+}
+
+module.exports = {getAllMovies, getMoviesById, getMoviesByWin};
