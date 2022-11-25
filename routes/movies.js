@@ -9,4 +9,17 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllMovies(pageSize, page));
 });
 
+router.get("/getMovie/:id", async(req, res) => {
+    const idMovie = req.params.id;
+    res.json(await controller.getAllMovies(idMovie))
+});
+
+router.get("/movieAward", async(req, res) => {
+    const movies = await controller.getMovieAward();
+});
+
+router.get("/movieByIdom", async(req, res) => {
+    const movies = await controller.getMovieByIdiom();
+})
+
 module.exports = router;
