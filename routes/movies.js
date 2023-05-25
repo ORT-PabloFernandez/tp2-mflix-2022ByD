@@ -10,6 +10,7 @@ router.get('/', async (req, res) => {
     res.json(await controller.getAllMovies(pageSize, page));
 });
 
+
 router.get('/:id', async (req, res) => {
     
     const pelicula = await moviesDb.getSingleMovie(req.params.id);
@@ -20,10 +21,22 @@ router.get('/:id', async (req, res) => {
 
 router.get('/ganadoras', async (req,res) => {
     const peliculasGanadoras = await  moviesDb.getWinnerMovies();
-    res.json(peliculasGanadoras);
+    console.log(peliculasGanadoras);
+    return res.json(peliculasGanadoras);
     
 });
 
+router.get('/allMovies', async (req, res) => {
+    const allMovies = await moviesDb.getAllMoviesSinPaginado();
+
+    res.json(allMovies);
+})
+
+router.get('/porIdioma', async (req,res) => {
+    const moviesPorIdioma = await moviesDb.moviesPorIdioma();
+
+    res.json(moviesPorIdioma);
+})
 
 
 module.exports = router;

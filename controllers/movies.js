@@ -6,4 +6,7 @@ async function getAllMovies(pageSize, page){
 
 
 module.exports = {getAllMovies};
-
+/*
+const movieController = {
+    getAllMovies: async (req,res )
+}*/

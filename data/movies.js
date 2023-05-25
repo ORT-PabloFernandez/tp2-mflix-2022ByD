@@ -23,12 +23,31 @@ async function getSingleMovie(id){
 
 async function getWinnerMovies(){
     const connectiondb = await conn.getConnection();
+    const queryObject = {
+        'awards.wins': { $gte: 1 }
+      };
     const movies = await connectiondb
                         .db(DATABASE)
                         .collection(MOVIES)
-                        .find({'awards.wins': {gt:0}}).toArray();
+                        .find(queryObject).toArray();
+    // { $gte : 20000 }}
     
     return movies;
 }
 
-module.exports = {getAllMovies, getSingleMovie, getWinnerMovies};
+async function getAllMoviesSinPaginado(){
+    const connectiondb = await conn.getConnection();
+
+    const movies = await connectiondb.db(DATABASE).collection(MOVIES).toArray();
+
+    return movies;
+}
+
+async function moviesPorIdioma(){
+    const movies = await getAllMovies(100,10);
+    console.log("paso por acá");
+    const moviesPorIdioma = movies.filter( (movies) => movies.languaje != null);
+
+    return moviesPorIdioma;
+}
+module.exports = {getAllMovies, getSingleMovie, getWinnerMovies, getAllMoviesSinPaginado,moviesPorIdioma};
