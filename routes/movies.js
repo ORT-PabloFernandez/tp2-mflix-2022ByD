@@ -19,24 +19,42 @@ router.get('/:id', async (req, res) => {
 });
 
 
-router.get('/ganadoras', async (req,res) => {
-    const peliculasGanadoras = await  moviesDb.getWinnerMovies();
-    console.log(peliculasGanadoras);
-    return res.json(peliculasGanadoras);
+router.get('/:year', async (req,res ) => {
+    const peliculas = await moviesDb.mayoresDe(req.params.year);
+    res.json(peliculas);
+})
+
+
+router.get('/special/withawards', async (req,res) => {
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+    const page = req.query.page ? parseInt(req.query.page) : 0;
+
+    const peliculasGanadoras = await  moviesDb.getWinnerMovies(pageSize,page);
+    //console.log(peliculasGanadoras);
+    res.json(peliculasGanadoras);
     
 });
 
-router.get('/allMovies', async (req, res) => {
-    const allMovies = await moviesDb.getAllMoviesSinPaginado();
 
-    res.json(allMovies);
+router.get('/languages/:languages', async(req,res)=>{
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+    const page = req.query.page ? parseInt(req.query.page) : 0;
+
+    const language = req.params.languages;
+
+    const porLanguaje = await moviesDb.mooviesPorLanguaje(language,pageSize,page);
+    res.json(porLanguaje);
 })
 
-router.get('/porIdioma', async (req,res) => {
-    const moviesPorIdioma = await moviesDb.moviesPorIdioma();
+router.get('/tomatoes/fresh/sorted', async (req,res) => {
+    
+    const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 0;
+    const page = req.query.page ? parseInt(req.query.page) : 0;
+    const moovies = await moviesDb.getMoviesSortedByTomatoes(pageSize,page);
 
-    res.json(moviesPorIdioma);
+    res.json(moovies);
 })
+
 
 
 module.exports = router;
